@@ -1,0 +1,5 @@
+- hosts: all
+
+  tasks:
+    - name: ping
+      shell: ping 8.8.8.8
