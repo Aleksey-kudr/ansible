@@ -9,6 +9,7 @@
         - curl
         - gnupg
         state: present
+        update_cache: true
       become: true
 
     - name: add GPG key
