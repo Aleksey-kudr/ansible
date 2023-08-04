@@ -4,13 +4,13 @@
   tasks:
     - name: install apt repository
       apt:
-        become: true
         pkg:
         - ca-certificates
         - curl
         - gnupg
         state: absent
       register: out
+      become: true
     - debug:
         var: out
 
