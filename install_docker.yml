@@ -32,6 +32,12 @@
         - containerd.io
         - docker-buildx-plugin
         - docker-compose-plugin
-        state: absent
+        state: present
       become: true
+
+    - name: check docker
+      service:
+        name: docker
+        state: restarted
+        enabled: yes
 
