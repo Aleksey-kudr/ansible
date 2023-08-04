@@ -6,6 +6,6 @@
       apt:
         name: ca-certificates
         state: present
-        register: out
+      register: out
     - debug:
         var: out
