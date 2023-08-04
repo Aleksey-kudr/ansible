@@ -8,7 +8,7 @@
         - ca-certificates
         - curl
         - gnupg
-        state: present
+        state: latest
         update_cache: true
       become: true
 
