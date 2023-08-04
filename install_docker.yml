@@ -19,6 +19,8 @@
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
       become: true
+    - debug:
+        var: out
 
     - name: add apt repository
       apt_repository:
