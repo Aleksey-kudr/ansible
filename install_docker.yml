@@ -8,7 +8,10 @@
         - ca-certificates
         - curl
         - gnupg
-        state: present
+        state: absent
       register: out
     - debug:
         var: out
+
+    #- name: add GPG key
+      #apt_key:
