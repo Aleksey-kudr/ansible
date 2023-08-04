@@ -14,5 +14,30 @@
     - debug:
         var: out
 
-    #- name: add GPG key
-      #apt_key:
+    - name: add GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: add apt repository
+      apt_repository:
+        repo: https://download.docker.com/linux/ubuntu stable
+        state: present
+      register: out
+      become: true
+    - debug:
+        var: out
+
+    - name: install docker
+      apt:
+        pkg:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        - docker-buildx-plugin
+        - docker-compose-plugin
+        state: present
+      register: out
+      become: true
+    - debug:
+        var: out
