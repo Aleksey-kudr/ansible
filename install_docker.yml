@@ -2,10 +2,13 @@
 - name: install docker
   hosts: all
   tasks:
-    - name: install ca-certificates
+    - name: install apt repository
       apt:
-        name: ca-certificates
-        state: present
+        pkg:
+        - ca-certificates
+        - curl
+        - gnupg
+      state: present
       register: out
     - debug:
         var: out
