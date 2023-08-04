@@ -22,7 +22,7 @@
 
     - name: add apt repository
       apt_repository:
-        repo: https://download.docker.com/linux/ubuntu stable
+        repo: https://download.docker.com/linux/ubuntu
         state: present
       register: out
       become: true
