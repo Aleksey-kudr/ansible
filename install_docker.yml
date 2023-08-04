@@ -8,7 +8,7 @@
         - ca-certificates
         - curl
         - gnupg
-        state: absent
+        state: present
       register: out
       become: true
     - debug:
