@@ -1,0 +1,8 @@
+#playbook install docker on ubuntu 20.04
+- name: install docker
+  hosts: all
+  tasks:
+    - name: install ca-certificates
+      apt:
+        name: ca-certificates
+        state: present
