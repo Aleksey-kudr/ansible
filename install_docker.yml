@@ -9,10 +9,7 @@
         - curl
         - gnupg
         state: present
-      register: out
       become: true
-    - debug:
-        var: out
 
     - name: add GPG key
       apt_key:
@@ -26,10 +23,7 @@
       apt_repository:
         repo: deb https://download.docker.com/linux/ubuntu stable
         state: present
-      register: out
       become: true
-    - debug:
-        var: out
 
     - name: install docker
       apt:
@@ -40,7 +34,5 @@
         - docker-buildx-plugin
         - docker-compose-plugin
         state: present
-      register: out
       become: true
-    - debug:
-        var: out
+
