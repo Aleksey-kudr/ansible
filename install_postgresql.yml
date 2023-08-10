@@ -2,16 +2,17 @@
 - name: install postgresql
   hosts: study
   tasks:
-    - name: apt install postgresql
-      apt:
-        pkg:
-        - postgresql
-        - postgresql-contrib
-        update_cache: yes
-        state: latest
-      become: yes
-    - name: start service postgresql
-      service:
-        name: postgresql
-        state: stopped
+    - name: install postgre
+      block:
+        - name: apt install postgresql
+          apt:
+            pkg:
+             - postgresql
+             - postgresql-contrib
+            update_cache: yes
+            state: latest
+        - name: start service postgresql
+          service:
+            name: postgresql
+            state: stopped
       become: yes
