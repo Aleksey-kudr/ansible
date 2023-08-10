@@ -1,0 +1,15 @@
+#playbook install postgresql on ubuntu 20.04
+- name: install postgresql
+  hosts: study
+  tasks:
+    - name: apt install postgresql
+      apt:
+        pkg:
+        - postgresql
+        - postgresql-contrib
+        update_cache: yes
+        state: latest
+    - name: start service postgresql
+      service:
+        name: postgresql
+        state: start
