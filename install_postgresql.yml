@@ -9,6 +9,7 @@
         - postgresql-contrib
         update_cache: yes
         state: latest
+        become: yes
     - name: start service postgresql
       service:
         name: postgresql
