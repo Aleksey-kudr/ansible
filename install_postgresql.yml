@@ -17,12 +17,14 @@
             state: started
         - name: Create a new database with name "app"
           postgresql_db:
+            state: present
             name: app
-        - name: Create user in postgre
+          become: yes
+          become_user: postgres
+        - name: Create user in postgres
           postgresql_user:
             db: app
             name: app_user
             password: 123
             priv: ALL
       become: yes
-      become_user: postgres
