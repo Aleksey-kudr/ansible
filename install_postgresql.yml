@@ -15,6 +15,14 @@
           service:
             name: postgresql
             state: started
+        - name: Grant ansible to postgreserver
+          postgresql_pg_hba:
+            dest: /var/lib/postgres/data/pg_hba.conf
+            contype: host
+            databases: all
+            users: postgres
+            method: md5
+            create: true
         - name: Create a new database with name "app"
           postgresql_db:
             name: app
