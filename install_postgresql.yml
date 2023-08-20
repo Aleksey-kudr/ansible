@@ -15,4 +15,19 @@
           service:
             name: postgresql
             state: started
+        - name: Create a new database with name "app"
+          postgresql_db:
+            name: app
+        - name: Create user in postgre
+          postgresql_user:
+            db: app
+            name: app_user
+            password: 123
+            priv: ALL
+        - name: added access local to db
+          postgresql_pg_hba:
+            dest: /var/lib/postgres/data/pg_hba.conf
+            contype: local
+            users: app_user
+            databases: app
       become: yes
