@@ -17,7 +17,7 @@
             state: started
         - name: Grant ansible to postgreserver
           postgresql_pg_hba:
-            dest: /var/lib/postgres/data/pg_hba.conf
+            dest: /etc/postgresql/12/main/pg_hba.conf
             contype: host
             databases: all
             users: postgres
@@ -34,7 +34,7 @@
             priv: ALL
         - name: added access local to db
           postgresql_pg_hba:
-            dest: /var/lib/postgres/data/pg_hba.conf
+            dest: /etc/postgresql/12/main/pg_hba.conf
             contype: local
             users: app_user
             databases: app
