@@ -25,3 +25,4 @@
             password: 123
             priv: ALL
       become: yes
+      become_user: postgres
