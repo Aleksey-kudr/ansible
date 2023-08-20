@@ -15,14 +15,6 @@
           service:
             name: postgresql
             state: started
-        - name: Grant ansible to postgreserver
-          postgresql_pg_hba:
-            dest: /etc/postgresql/12/main/pg_hba.conf
-            contype: host
-            databases: all
-            users: postgres
-            method: md5
-            create: true
         - name: Create a new database with name "app"
           postgresql_db:
             name: app
@@ -32,10 +24,4 @@
             name: app_user
             password: 123
             priv: ALL
-        - name: added access local to db
-          postgresql_pg_hba:
-            dest: /etc/postgresql/12/main/pg_hba.conf
-            contype: local
-            users: app_user
-            databases: app
       become: yes
