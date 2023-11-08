@@ -77,7 +77,7 @@
       ansible.builtin.file:
         src: /etc/nginx/sites-available/test-php.conf
         dest: /etc/ngin/sites-enabled/test-php
-        sate: link
+        state: link
 
     - name: reload nginx
       ansible.builtin.service:
