@@ -13,7 +13,7 @@
 
 - name: copy php_site
   ansible.builtin.copy:
-    src: files/php/test-php
+    src: files/test-php
     dest: /var/www/
 
 - name: create link
