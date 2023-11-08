@@ -1,0 +1,20 @@
+#LEMP
+- name: install lemp stack
+  hosts: all
+  become: true
+  tasks:
+    - name: install nginx apt
+      ansible.builtin.apt:
+        pkg: 'nginx'
+        state: latest
+        update_cache: true
+
+    - name: delete /var/www/html
+      ansible.builtin.file:
+        path: "/var/www/html"
+        state: absent
+
+    - name: copy new html
+      ansible.builtin.copy:
+        src: file/html
+        dst: /var/www/
