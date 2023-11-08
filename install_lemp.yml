@@ -8,8 +8,8 @@
     - php_for_lemp
 
   tasks:
-  - name: reload nginx_for_lemp
+  - name: reload nginx
     ansible.builtin.service:
-      name: nginx_for_lemp
+      name: nginx
       state: reloaded
 
