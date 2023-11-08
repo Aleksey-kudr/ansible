@@ -1,6 +1,6 @@
-- name: install nginx_for_lemp apt
+- name: install nginx apt
   ansible.builtin.apt:
-    pkg: 'nginx_for_lemp'
+    pkg: 'nginx'
     state: latest
     update_cache: true
 
