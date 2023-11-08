@@ -64,17 +64,17 @@
         update_cache: true
 
     - name: copy nginx_conf
-      ansible.builtin.apt:
+      ansible.builtin.copy:
         src: files/php/test-php.conf
         dest: /etc/nginx/sites-available
 
     - name: copy php_site
-      ansible.builtin.apt:
+      ansible.builtin.copy:
         src: files/php/test-php
         dest: /var/www/
 
     - name: create link
-      ansible.builtin.apt:
+      ansible.builtin.copy:
         src: /etc/nginx/sites-available/test-php.conf
         dest: /etc/ngin/sites-enabled/test-php
         sate: link
