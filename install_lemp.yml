@@ -3,6 +3,7 @@
   hosts: all
   become: true
   tasks:
+    #install and setup nginx
     - name: install nginx apt
       ansible.builtin.apt:
         pkg: 'nginx'
@@ -18,3 +19,38 @@
       ansible.builtin.copy:
         src: files/html
         dest: /var/www/
+    #install and setup mysql
+    - name: install mysql
+      ansible.builtin.apt:
+        pkg: 'mysql-server'
+        state: latest
+        update_cache: true
+
+    - name: install pymysql
+      ansible.builtin.apt:
+        pkg: 'python3-pymysql'
+        state: latest
+        update_cache: true
+
+    - name: setup root user
+      community.mysql.mysql_user:
+        name: root
+        password: 123
+        login_user: root
+        login_password: 123
+        check_implicit_admin: true
+        login_unix_socker: /var/run/mysqld/mysqld.sock
+
+    - name: remove anonymous users
+      community.mysql.mysql_user:
+        name: ""
+        state: absent
+        login_user: root
+        login_password: 123
+
+    - name: remove test database
+      community.mysql.mysql_db:
+        name: test
+        state: absent
+        login_user: root
+        login_password: 123
