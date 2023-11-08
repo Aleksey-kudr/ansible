@@ -16,5 +16,5 @@
 
     - name: copy new html
       ansible.builtin.copy:
-        src: /opt/ansible/file/html
+        src: files/html
         dest: /var/www/
