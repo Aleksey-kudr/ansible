@@ -2,85 +2,14 @@
 - name: install lemp stack
   hosts: all
   become: true
+  roles:
+    - nginx_for_lemp
+    - mysql_for_lemp
+    - php_for_lemp
+
   tasks:
-    #install and setup nginx
-    - name: install nginx apt
-      ansible.builtin.apt:
-        pkg: 'nginx'
-        state: latest
-        update_cache: true
-
-    - name: delete /var/www/html
-      ansible.builtin.file:
-        path: "/var/www/html"
-        state: absent
-
-    - name: copy new html
-      ansible.builtin.copy:
-        src: files/html
-        dest: /var/www/
-
-    #install and setup mysql
-    - name: install mysql
-      ansible.builtin.apt:
-        pkg: 'mysql-server'
-        state: latest
-
-    - name: install pymysql
-      ansible.builtin.apt:
-        pkg: 'python3-pymysql'
-        state: latest
-
-    - name: setup root user
-      community.mysql.mysql_user:
-        name: root
-        password: 123
-        login_user: root
-        login_password: 123
-        check_implicit_admin: true
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-
-    - name: remove anonymous users
-      community.mysql.mysql_user:
-        name: ""
-        state: absent
-        login_user: root
-        login_password: 123
-
-    - name: remove test database
-      community.mysql.mysql_db:
-        name: test
-        state: absent
-        login_user: root
-        login_password: 123
-
-    # install php
-    - name: install php
-      ansible.builtin.apt:
-        pkg:
-        - php-fpm
-        - php-mysql
-        state: latest
-        update_cache: true
-
-    - name: copy nginx_conf
-      ansible.builtin.copy:
-        src: files/php/test-php.conf
-        dest: /etc/nginx/sites-available
-
-    - name: copy php_site
-      ansible.builtin.copy:
-        src: files/php/test-php
-        dest: /var/www/
-
-    - name: create link
-      ansible.builtin.file:
-        src: /etc/nginx/sites-available/test-php.conf
-        dest: /etc/nginx/sites-enabled/test-php
-        state: link
-
-    - name: reload nginx
-      ansible.builtin.service:
-        name: nginx
-        state: reloaded
+  - name: reload nginx_for_lemp
+    ansible.builtin.service:
+      name: nginx_for_lemp
+      state: reloaded
 

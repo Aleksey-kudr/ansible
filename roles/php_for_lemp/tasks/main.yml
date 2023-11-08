@@ -1,0 +1,23 @@
+- name: install php
+  ansible.builtin.apt:
+    pkg:
+    - php-fpm
+    - php-mysql
+    state: latest
+    update_cache: true
+
+- name: copy nginx_conf
+  ansible.builtin.copy:
+    src: files/php_nginx/test-php.conf
+    dest: /etc/nginx/sites-available
+
+- name: copy php_site
+  ansible.builtin.copy:
+    src: files/php/test-php
+    dest: /var/www/
+
+- name: create link
+  ansible.builtin.file:
+    src: /etc/nginx/sites-available/test-php.conf
+    dest: /etc/nginx/sites-enabled/test-php
+    state: link

@@ -1,0 +1,15 @@
+- name: install nginx_for_lemp apt
+  ansible.builtin.apt:
+    pkg: 'nginx_for_lemp'
+    state: latest
+    update_cache: true
+
+- name: delete /var/www/html
+  ansible.builtin.file:
+    path: "/var/www/html"
+    state: absent
+
+- name: copy new html
+  ansible.builtin.copy:
+    src: files/html
+    dest: /var/www/
