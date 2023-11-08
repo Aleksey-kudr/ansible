@@ -17,4 +17,4 @@
     - name: copy new html
       ansible.builtin.copy:
         src: file/html
-        dst: /var/www/
+        dest: /var/www/
