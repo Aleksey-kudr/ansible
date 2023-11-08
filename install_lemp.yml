@@ -76,7 +76,7 @@
     - name: create link
       ansible.builtin.file:
         src: /etc/nginx/sites-available/test-php.conf
-        dest: /etc/ngin/sites-enabled/test-php
+        dest: /etc/nginx/sites-enabled/test-php
         state: link
 
     - name: reload nginx
