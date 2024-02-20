@@ -1,22 +1,5 @@
 - name: install node 16
   hosts: web
   become: true
-  tasks:
-    - name: node 16 | copy script
-      ansible.builtin.copy:
-        src: files/node16.sh
-        dest: /scripts/
-
-    - name: node 16 | add PPA script
-      ansible.builtin.shell:
-        cmd: bash /scripts/node16.sh
-
-    - name: Pause for 5 minutes to build app cache
-      ansible.builtin.pause:
-        minutes: 3
-
-    - name: node 16 | install node
-      ansible.builtin.apt:
-        name: nodejs
-        state: present
-
+  roles:
+    - node16
