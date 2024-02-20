@@ -9,7 +9,7 @@
 
     - name: node 16 | add PPA script
       ansible.builtin.shell:
-        cmd: ./scripts/node16.sh
+        cmd: bash /scripts/node16.sh
 
     - name: Pause for 5 minutes to build app cache
       ansible.builtin.pause:
