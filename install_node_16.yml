@@ -1,5 +1,6 @@
 - name: install node 16
   hosts: web
+  become: true
   tasks:
     - name: node 16 | add PPA script
       ansible.builtin.shell:
