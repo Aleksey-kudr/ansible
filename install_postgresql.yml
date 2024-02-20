@@ -2,7 +2,7 @@
 - name: install postgresql
   hosts: study
   tasks:
-    - name: install postgre
+    - name: install postgres
       block:
         - name: apt install postgresql
           apt:

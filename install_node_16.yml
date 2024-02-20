@@ -1,0 +1,12 @@
+- name: install node 16
+  hosts: web
+  tasks:
+    - name: node 16 | add PPA script
+      ansible.builtin.shell:
+        cmd: curl -s https://deb.nodesource.com/setup_16.x | sudo bash
+
+    - name: node 16 | install node
+      ansible.builtin.apt:
+        name: nodejs
+        state: present
+
