@@ -4,7 +4,7 @@
 
 - src: git+ssh://git@gitlab.alkudr.ru/roles/game2048-docker.git
   version: master
-  name: game2048-docker.git
+  name: game2048-docker
 
 - src: git+ssh://git@gitlab.alkudr.ru/roles/docker.git
   version: master
