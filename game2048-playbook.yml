@@ -1,4 +1,5 @@
 - name: game2048 deploy like systemd service
   hosts: web
   roles:
+    - node16
     - game2048-service
