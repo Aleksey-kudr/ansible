@@ -1,0 +1,4 @@
+- name: game2048 deploy like systemd service
+  hosts: web
+  roles:
+    - game2048-service
