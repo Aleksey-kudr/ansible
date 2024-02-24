@@ -1,11 +1,11 @@
-- src: git+ssh://git@gitlab.alkudr.ru/roles/node16.git
+- src: git@gitlab.alkudr.ru/roles/node16.git
+  scm: git
   version: master
-  name: node16
 
-- src: git+ssh://git@gitlab.alkudr.ru/roles/game2048-docker.git
+- src: git@gitlab.alkudr.ru/roles/game2048-docker.git
+  scm: git
   version: master
-  name: game2048-docker
 
-- src: git+ssh://git@gitlab.alkudr.ru/roles/docker.git
+- src: git@gitlab.alkudr.ru/roles/docker.git
+  scm: git
   version: master
-  name: docker
